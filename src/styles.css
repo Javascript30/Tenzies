@@ -16,4 +16,24 @@
 
 body {
   background-color: var(--lblack);
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  background-color: var(--cream);
+  width: min(500px, 100vw - 2rem);
+  margin-inline: auto;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+main h1 {
+  font-family: "Karla", sans-serif;
 }
