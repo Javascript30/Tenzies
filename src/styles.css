@@ -2,6 +2,7 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
 }
 
 :root {
@@ -21,6 +22,12 @@ body {
   place-items: center;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  transition: background-color, transform ease-in 200ms;
+}
+
 p {
   font-family: "Inter", sans-serif;
 }
@@ -34,6 +41,48 @@ main {
   border-radius: 1rem;
 }
 
-main h1 {
+main h1,
+.die,
+.roll {
   font-family: "Karla", sans-serif;
+}
+
+main h1,
+p {
+  padding-block-end: 1rem;
+}
+
+.dices {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  padding-block: 1rem;
+}
+
+.die {
+  max-width: 3rem;
+  padding-block: 0.7rem;
+  font-size: 1.5rem;
+  background-color: var(--white);
+  border-radius: 5px;
+
+  box-shadow: 0px 4px 4px var(--lblack);
+}
+
+.die:hover {
+  background-color: #d6e4e5;
+}
+
+.roll {
+  margin-block-start: 1.5rem;
+  padding: 0.7rem 3rem;
+  background-color: var(--blue);
+  border-radius: 5px;
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.roll:hover {
+  background-color: #4b56d2;
+  transform: scale(0.9);
 }
