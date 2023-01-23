@@ -1,36 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import Die from "./components/Die";
 
 function App() {
+  const [dices, setDices] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("Dice state changed!");
+  }, [dices]);
   // Generate new dice array
 
-  const randomDice = () => {
+  function randomDice() {
     return Math.floor(Math.random() * 6) + 1;
-  };
+  }
 
-  const allNewDice = () => {
+  function allNewDice() {
     let newArray = [];
     for (let i = 0; i < 10; i++) {
       newArray.push({
-        value: Math.floor(Math.random() * 6) + 1,
+        value: randomDice(),
         isHeld: false,
         id: uuidv4(),
       });
     }
     return newArray;
-  };
+  }
 
-  console.log(allNewDice());
-
-  const [dices, setDices] = React.useState(allNewDice());
+  // console.log(allNewDice());
 
   const diceElements = dices.map((dice) => (
-    <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} />
+    <Die
+      key={dice.id}
+      value={dice.value}
+      isHeld={dice.isHeld}
+      holdDice={() => holdDice(dice.id)}
+    />
   ));
 
+  // Rolling the Dices using the roll btn
   const rollDice = () => {
-    setDices(allNewDice());
+    setDices((oldDices) =>
+      oldDices.map((dice) => {
+        return dice.isHeld
+          ? dice
+          : { ...dice, id: uuidv4(), value: randomDice() };
+      })
+    );
+  };
+
+  // Changing the held boolean value
+
+  const holdDice = (id) => {
+    setDices((oldDices) =>
+      oldDices.map((dice) => {
+        return dice.id === id ? { ...dice, isHeld: !dice.isHeld } : dice;
+      })
+    );
   };
 
   return (
