@@ -1,3 +1,10 @@
 export default function Die(props) {
-  return <button className="die">{props.value}</button>;
+  const heldColor = {
+    backgroundColor: props.isHeld ? "var(--green)" : "var(--white)",
+  };
+  return (
+    <button className="die" style={heldColor}>
+      {props.value}
+    </button>
+  );
 }

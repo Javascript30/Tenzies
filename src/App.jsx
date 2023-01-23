@@ -4,21 +4,30 @@ import Die from "./components/Die";
 
 function App() {
   // Generate new dice array
+
+  const randomDice = () => {
+    return Math.floor(Math.random() * 6) + 1;
+  };
+
   const allNewDice = () => {
-    const newArray = [];
+    let newArray = [];
     for (let i = 0; i < 10; i++) {
-      newArray.push(Math.floor(Math.random() * 6) + 1);
+      newArray.push({
+        value: Math.floor(Math.random() * 6) + 1,
+        isHeld: false,
+        id: uuidv4(),
+      });
     }
-    // const newArrayWithIDs = newArray.map((item, index) => ({
-    //   ...item,
-    //   id: index,
-    // }));
     return newArray;
   };
 
+  console.log(allNewDice());
+
   const [dices, setDices] = React.useState(allNewDice());
 
-  const diceElements = dices.map((dice) => <Die key={uuidv4()} value={dice} />);
+  const diceElements = dices.map((dice) => (
+    <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} />
+  ));
 
   const rollDice = () => {
     setDices(allNewDice());
