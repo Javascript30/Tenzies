@@ -1,3 +1,3 @@
-export default function Die() {
-  return <button className="die">2</button>;
+export default function Die(props) {
+  return <button className="die">{props.value}</button>;
 }

@@ -65,12 +65,17 @@ p {
   font-size: 1.5rem;
   background-color: var(--white);
   border-radius: 5px;
-
-  box-shadow: 0px 4px 4px var(--lblack);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0px 4px 4px var(--lblack); */
 }
 
 .die:hover {
   background-color: #d6e4e5;
+  transform: skewY(10deg);
+}
+
+.die:hover:nth-child(even) {
+  transform: skewY(-10deg);
 }
 
 .roll {
