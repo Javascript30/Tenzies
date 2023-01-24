@@ -8,9 +8,16 @@ function App() {
 
   React.useEffect(() => {
     console.log("Dice state changed!");
+    if (
+      dices.every((dice) => dice.isHeld) &&
+      dices.every((dice) => dice.value === dices[0].value)
+    ) {
+      setTenzies(!tenzies);
+      console.log("You won");
+    }
   }, [dices]);
-  // Generate new dice array
 
+  // Generate new dice array
   function randomDice() {
     return Math.floor(Math.random() * 6) + 1;
   }
@@ -50,7 +57,6 @@ function App() {
   };
 
   // Changing the held boolean value
-
   const holdDice = (id) => {
     setDices((oldDices) =>
       oldDices.map((dice) => {

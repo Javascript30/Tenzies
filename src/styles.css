@@ -37,7 +37,7 @@ main {
   width: min(500px, 100vw - 2rem);
   margin-inline: auto;
   text-align: center;
-  padding: 2rem;
+  padding: min(2rem, 7vw);
   border-radius: 1rem;
 }
 
@@ -55,7 +55,7 @@ p {
 .dices {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+  gap: min(2rem, 4vw);
   padding-block: 1rem;
 }
 
