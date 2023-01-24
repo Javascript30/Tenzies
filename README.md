@@ -49,8 +49,13 @@ Screenshot of the Tenzies Game mock up
 4. Then created the `Die` **component** as a button element for the various dice 
    
 5. Mapped out the dices in `App` using `props` as needed for manipulating the `held` state and die values as required  
+   
 
-6. Writing out this `README.md` file
+6. Added the `Confetti` package on a game win 
+   
+   ![](./src/assets/images/conffeti.jpg)
+
+7. Writing out this `README.md` file
 
 ### Built with
 

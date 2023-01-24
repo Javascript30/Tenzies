@@ -49,13 +49,18 @@ function App() {
 
   // Rolling the Dices using the roll btn
   const rollDice = () => {
-    setDices((oldDices) =>
-      oldDices.map((dice) => {
-        return dice.isHeld
-          ? dice
-          : { ...dice, id: uuidv4(), value: randomDice() };
-      })
-    );
+    if (tenzies) {
+      setTenzies(!tenzies);
+      setDices(allNewDice());
+    } else {
+      setDices((oldDices) =>
+        oldDices.map((dice) => {
+          return dice.isHeld
+            ? dice
+            : { ...dice, id: uuidv4(), value: randomDice() };
+        })
+      );
+    }
   };
 
   // Changing the held boolean value
@@ -69,11 +74,19 @@ function App() {
 
   return (
     <main>
-      {tenzies && <Confetti />}
+      {tenzies && <Confetti />
+      // && (
+      //   <audio autoPlay>
+      //     {" "}
+      //     <source src="./assets/win.mp3" type="audio/mp3" />
+      //   </audio>
+      // )
+      }
       <h1>Tenzies</h1>
       <p>
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
+        {tenzies
+          ? "You've won 👏🏾. Roll to start a new game !!"
+          : "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."}
       </p>
       <div className="dices">{diceElements}</div>
 
