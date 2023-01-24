@@ -5,7 +5,7 @@ export default function Die(props) {
   };
   return (
     <button className="die" style={heldColor} onClick={props.holdDice}>
-      {props.value}
+      {props.die ? props.demDice : props.value}
     </button>
   );
 }

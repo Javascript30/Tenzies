@@ -7,15 +7,18 @@ function App() {
   const [dices, setDices] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
 
+  // State for realish dices
+  const [demdice, setDemDice] = React.useState(true);
+
   React.useEffect(() => {
-    console.log("Dice state changed!");
     // Check if all the dices are being held and have same value
     if (
       dices.every((dice) => dice.isHeld) &&
-      dices.every((dice) => dice.value === dices[0].value)
+      dices.every(
+        (dice) => dice.value === dices[0].value || dice.dice === dices[0].dice
+      )
     ) {
       setTenzies(!tenzies);
-      console.log("You won");
     }
   }, [dices]);
 
@@ -24,11 +27,56 @@ function App() {
     return Math.floor(Math.random() * 6) + 1;
   }
 
+  // Random die span generated
+  let i = 0;
+  function randomDieFace() {
+    switch (Math.ceil(Math.random() * 6)) {
+      case 1:
+        return <span></span>;
+        break;
+      case 2:
+        return `<span></span>
+          <span></span>`;
+        break;
+      case 3:
+        return `<span></span>
+          <span></span>
+          <span></span>`;
+        break;
+      case 4:
+        return `<span></span>
+            <span></span>
+            <span></span>
+            <span></span>`;
+        break;
+      case 5:
+        return `<span></span>
+            <span></span>
+            <span></span>
+            span></span>
+            <span></span>`;
+        break;
+      case 6:
+        return `<span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>`;
+        break;
+      default:
+        break;
+    }
+  }
+
+  console.log(randomDieFace());
+
   function allNewDice() {
     let newArray = [];
     for (let i = 0; i < 10; i++) {
       newArray.push({
         value: randomDice(),
+        dice: randomDieFace(),
         isHeld: false,
         id: uuidv4(),
       });
@@ -36,14 +84,14 @@ function App() {
     return newArray;
   }
 
-  // console.log(allNewDice());
-
   const diceElements = dices.map((dice) => (
     <Die
       key={dice.id}
       value={dice.value}
       isHeld={dice.isHeld}
       holdDice={() => holdDice(dice.id)}
+      die={demdice}
+      demDice={dice.dice}
     />
   ));
 
@@ -57,7 +105,12 @@ function App() {
         oldDices.map((dice) => {
           return dice.isHeld
             ? dice
-            : { ...dice, id: uuidv4(), value: randomDice() };
+            : {
+                ...dice,
+                id: uuidv4(),
+                value: randomDice(),
+                dice: randomDieFace(),
+              };
         })
       );
     }

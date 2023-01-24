@@ -36,7 +36,7 @@ Screenshot of the Tenzies Game mock up
 ### Links
 
 - Solution URL: [GitHub Link](https://github.com/Javascript30/Tenzies.git)
-- Live Site URL: [Netlify Deploy](https://Memeleskim.netlify.app/)
+- Live Site URL: [Netlify Deploy](https://teenzzies.netlify.app/)
 
 ## My process
 
