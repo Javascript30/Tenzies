@@ -8,7 +8,7 @@ function App() {
   const [tenzies, setTenzies] = React.useState(false);
 
   // State for realish dices
-  const [demdice, setDemDice] = React.useState(true);
+  const [demdice, setDemDice] = React.useState(false);
 
   React.useEffect(() => {
     // Check if all the dices are being held and have same value
@@ -35,34 +35,54 @@ function App() {
         return <span></span>;
         break;
       case 2:
-        return `<span></span>
-          <span></span>`;
+        return (
+          <>
+            <span></span>
+            <span></span>
+          </>
+        );
         break;
       case 3:
-        return `<span></span>
-          <span></span>
-          <span></span>`;
+        return (
+          <>
+            <span></span>
+            <span></span>
+            <span></span>
+          </>
+        );
         break;
       case 4:
-        return `<span></span>
+        return (
+          <>
             <span></span>
             <span></span>
-            <span></span>`;
+            <span></span>
+            <span></span>
+          </>
+        );
         break;
       case 5:
-        return `<span></span>
+        return (
+          <>
             <span></span>
             <span></span>
-            span></span>
-            <span></span>`;
+            <span></span>
+            <span></span>
+            <span></span>
+          </>
+        );
         break;
       case 6:
-        return `<span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>`;
+        return (
+          <>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </>
+        );
         break;
       default:
         break;

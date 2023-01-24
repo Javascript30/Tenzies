@@ -65,7 +65,6 @@ p {
   font-size: 1.5rem;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  /* box-shadow: 0px 4px 4px var(--lblack); */
 }
 
 .die:hover {
@@ -89,4 +88,24 @@ p {
 .roll:hover {
   background-color: #4b56d2;
   transform: scale(0.9);
+}
+
+/* Incase of Dice Faces*/
+
+.die:has(span) {
+  display: none;
+  position: relative;
+  padding-block: 2rem;
+}
+.die span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--black);
+}
+
+.die:nth-child(1) {
+  top: 0;
+  left: 0;
 }
