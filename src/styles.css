@@ -93,19 +93,132 @@ p {
 /* Incase of Dice Faces*/
 
 .die:has(span) {
-  display: none;
+  min-width: 55px;
+  height: 55px;
   position: relative;
-  padding-block: 2rem;
+  padding-block: 0;
+  padding-inline: 0;
 }
+
+.die:has(span):hover,
+.die:has(span):hover:nth-child(even) {
+  transform: skewY(0deg);
+}
+
 .die span {
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--black);
 }
 
-.die:nth-child(1) {
+.die span:first-child:nth-last-child(1) {
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.die span:first-child:nth-last-child(2) {
+  top: 15px;
+  right: 15px;
+}
+
+.die span:first-child:nth-last-child(2) ~ span {
+  bottom: 15px;
+  left: 15px;
+}
+
+.die span:first-child:nth-last-child(3) {
+  top: 10px;
+  right: 10px;
+}
+
+.die span:first-child:nth-last-child(3) ~ span {
+  bottom: 10px;
+  left: 10px;
+}
+
+.die span:first-child:nth-last-child(3) ~ span:nth-child(2) {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.die span:first-child:nth-last-child(4) {
+  top: 10px;
+  right: 10px;
+}
+
+.die span:first-child:nth-last-child(4) ~ span:nth-child(2) {
+  top: 10px;
+  left: 10px;
+}
+.die span:first-child:nth-last-child(4) ~ span:nth-child(3) {
+  bottom: 10px;
+  left: 10px;
+}
+
+.die span:first-child:nth-last-child(4) ~ span:nth-child(4) {
+  bottom: 10px;
+  right: 10px;
+}
+
+.die span:first-child:nth-last-child(5) {
+  top: 10px;
+  right: 10px;
+}
+
+.die span:first-child:nth-last-child(5) ~ span:nth-child(2) {
+  top: 10px;
+  left: 10px;
+}
+.die span:first-child:nth-last-child(5) ~ span:nth-child(3) {
+  bottom: 10px;
+  left: 10px;
+}
+
+.die span:first-child:nth-last-child(5) ~ span:nth-child(4) {
+  bottom: 10px;
+  right: 10px;
+}
+.die span:first-child:nth-last-child(5) ~ span:nth-child(5) {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.die span:first-child:nth-last-child(6) {
+  top: 10px;
+  right: 10px;
+}
+
+.die span:first-child:nth-last-child(6) ~ span:nth-child(2) {
+  top: 10px;
+  left: 10px;
+}
+.die span:first-child:nth-last-child(6) ~ span:nth-child(3) {
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  margin: auto;
+}
+
+.die span:first-child:nth-last-child(6) ~ span:nth-child(4) {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 10px;
+}
+.die span:first-child:nth-last-child(6) ~ span:nth-child(5) {
+  bottom: 10px;
+  right: 10px;
+}
+.die span:first-child:nth-last-child(6) ~ span:nth-child(6) {
+  bottom: 10px;
+  left: 10px;
 }

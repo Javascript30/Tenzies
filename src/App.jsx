@@ -15,7 +15,10 @@ function App() {
     if (
       dices.every((dice) => dice.isHeld) &&
       dices.every(
-        (dice) => dice.value === dices[0].value || dice.dice === dices[0].dice
+        (dice) =>
+          dice.value === dices[0].value ||
+          dice.dice.props.children.length ===
+            dices[0].dice.props.children.length
       )
     ) {
       setTenzies(!tenzies);
@@ -28,12 +31,11 @@ function App() {
   }
 
   // Random die span generated
-  let i = 0;
   function randomDieFace() {
     switch (Math.ceil(Math.random() * 6)) {
       case 1:
         return <span></span>;
-        break;
+      // break;
       case 2:
         return (
           <>
@@ -41,7 +43,7 @@ function App() {
             <span></span>
           </>
         );
-        break;
+      // break;
       case 3:
         return (
           <>
@@ -50,7 +52,7 @@ function App() {
             <span></span>
           </>
         );
-        break;
+      // break;
       case 4:
         return (
           <>
@@ -60,7 +62,7 @@ function App() {
             <span></span>
           </>
         );
-        break;
+      // break;
       case 5:
         return (
           <>
@@ -71,7 +73,7 @@ function App() {
             <span></span>
           </>
         );
-        break;
+      // break;
       case 6:
         return (
           <>
@@ -83,13 +85,11 @@ function App() {
             <span></span>
           </>
         );
-        break;
+      // break;
       default:
         break;
     }
   }
-
-  console.log(randomDieFace());
 
   function allNewDice() {
     let newArray = [];
