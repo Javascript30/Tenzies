@@ -174,15 +174,15 @@ function App() {
       <h1>Tenzies</h1>
 
       {/* Radio button to switch btwn dice and numbers */}
-
-      <input
-        className="dieswitch"
-        type="checkbox"
-        name="numdice"
-        id="nosdie"
-        onChange={() => setDemDice(!demdice)}
-      />
-
+      <div className="switch">
+        <input
+          type="checkbox"
+          name="numdice"
+          id="dieswitch"
+          onChange={() => setDemDice(!demdice)}
+        />
+        <label htmlFor="dieswitch"></label>
+      </div>
       <p>
         {tenzies
           ? `You've won 👏🏾. Roll ${
