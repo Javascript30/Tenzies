@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import Die from "./components/Die";
+import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
   const [tenzies, setTenzies] = React.useState(false);
 
   // State for realish dices
-  const [demdice, setDemDice] = React.useState(false);
+  const [demdice, setDemDice] = React.useState(true);
+  // Track the number of rolls
+  const [noOfRolls, setNoOfRolls] = React.useState(0);
 
   React.useEffect(() => {
     // Check if all the dices are being held and have same value
@@ -21,6 +24,7 @@ function App() {
             dices[0].dice.props.children.length
       )
     ) {
+      // localStorage, setItem(noOfWins, +1);
       setTenzies(!tenzies);
     }
   }, [dices]);
@@ -120,6 +124,7 @@ function App() {
     if (tenzies) {
       setTenzies(!tenzies);
       setDices(allNewDice());
+      setNoOfRolls(0);
     } else {
       setDices((oldDices) =>
         oldDices.map((dice) => {
@@ -133,6 +138,10 @@ function App() {
               };
         })
       );
+      // Change the number of rolls on btn click
+      setNoOfRolls((prevRolls) => {
+        return (prevRolls += 1);
+      });
     }
   };
 
@@ -145,9 +154,16 @@ function App() {
     );
   };
 
+  // Style the no of rolls depending on the number
+  const rollStyle = {
+    color: noOfRolls <= 10 ? "var(--lgray)" : "var(--blue)",
+  };
+
+  const { width, height } = useWindowSize();
+
   return (
     <main>
-      {tenzies && <Confetti />
+      {tenzies && <Confetti width={width} height={height} />
       // && (
       //   <audio autoPlay>
       //     {" "}
@@ -156,10 +172,27 @@ function App() {
       // )
       }
       <h1>Tenzies</h1>
+
+      {/* Radio button to switch btwn dice and numbers */}
+
+      <input
+        className="dieswitch"
+        type="checkbox"
+        name="numdice"
+        id="nosdie"
+        onChange={() => setDemDice(!demdice)}
+      />
+
       <p>
         {tenzies
-          ? "You've won 👏🏾. Roll to start a new game !!"
+          ? `You've won 👏🏾. Roll ${
+              demdice ? "the dice" : ""
+            } to start a new game !!`
           : "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."}
+      </p>
+
+      <p className="roll__number">
+        Number of rolls : <span style={rollStyle}>{noOfRolls}</span>
       </p>
       <div className="dices">{diceElements}</div>
 

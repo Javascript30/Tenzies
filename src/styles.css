@@ -43,7 +43,8 @@ main {
 
 main h1,
 .die,
-.roll {
+.roll,
+.roll__number span {
   font-family: "Karla", sans-serif;
 }
 
