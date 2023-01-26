@@ -9,7 +9,7 @@ function App() {
   const [tenzies, setTenzies] = React.useState(false);
 
   // State for realish dices
-  const [demdice, setDemDice] = React.useState(true);
+  const [demdice, setDemDice] = React.useState(false);
   // Track the number of rolls
   const [noOfRolls, setNoOfRolls] = React.useState(0);
 
@@ -167,6 +167,21 @@ function App() {
       rollDice();
     }
     setDemDice(!demdice);
+
+    // Trying to get ihe is held state to change if die faces dont match the numbers n vice versa
+
+    // console.log(dices[0].dice.props.children.length);
+    // console.log(dices[0].value);
+
+    // if (demdice) {
+    //   setDices((oldDices) => {
+    //     oldDices.map((dice) => {
+    //       return dice.dice.props.children.length === dice.value
+    //         ? { ...dice, isHeld: !dice.isHeld }
+    //         : dice;
+    //     });
+    //   });
+    // }
   };
 
   return (
