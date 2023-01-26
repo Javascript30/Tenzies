@@ -161,6 +161,14 @@ function App() {
 
   const { width, height } = useWindowSize();
 
+  // Handle number/dice change
+  const setDieFaces = () => {
+    if (tenzies) {
+      rollDice();
+    }
+    setDemDice(!demdice);
+  };
+
   return (
     <main>
       {tenzies && <Confetti width={width} height={height} />
@@ -179,7 +187,7 @@ function App() {
           type="checkbox"
           name="numdice"
           id="dieswitch"
-          onChange={() => setDemDice(!demdice)}
+          onChange={setDieFaces}
         />
         <label htmlFor="dieswitch"></label>
       </div>
